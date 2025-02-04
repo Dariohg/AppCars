@@ -16,6 +16,7 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.unit.dp
 import com.example.appcars.core.session.SessionManager
 import com.example.appcars.home.data.model.HotWheelsCar
+import com.example.appcars.home.presentation.components.HotWheelsCard
 
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
@@ -96,42 +97,6 @@ fun HomeScreen(
     }
 }
 
-@Composable
-fun HotWheelsCard(car: HotWheelsCar) {
-    Card(
-        modifier = Modifier
-            .fillMaxWidth()
-            .height(200.dp)
-    ) {
-        Column(
-            modifier = Modifier
-                .fillMaxSize()
-                .padding(8.dp),
-            verticalArrangement = Arrangement.spacedBy(4.dp)
-        ) {
-            Text(
-                text = car.nombre,
-                style = MaterialTheme.typography.titleMedium
-            )
-            Text(
-                text = car.modelo,
-                style = MaterialTheme.typography.bodyMedium
-            )
-            Text(
-                text = "Color: ${car.color}",
-                style = MaterialTheme.typography.bodySmall
-            )
-            Text(
-                text = "Año: ${car.anioFabricacion}",
-                style = MaterialTheme.typography.bodySmall
-            )
-            Text(
-                text = "Estado: ${car.estado}",
-                style = MaterialTheme.typography.bodySmall
-            )
-        }
-    }
-}
 
 @Composable
 fun EmptyState(modifier: Modifier = Modifier) {

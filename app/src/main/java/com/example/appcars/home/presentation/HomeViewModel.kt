@@ -35,6 +35,8 @@ class HomeViewModel : ViewModel() {
 
             getHotWheelsUseCase()
                 .onSuccess { cars ->
+                    println("DEBUG: Success - Cars received: ${cars.size}")
+                    println("DEBUG: First car URLs: ${cars.firstOrNull()?.imagenes}")
                     _uiState.update {
                         it.copy(
                             cars = cars,
@@ -44,6 +46,7 @@ class HomeViewModel : ViewModel() {
                     }
                 }
                 .onFailure { error ->
+                    println("DEBUG: Error loading cars: ${error.message}")
                     _uiState.update {
                         it.copy(
                             isLoading = false,

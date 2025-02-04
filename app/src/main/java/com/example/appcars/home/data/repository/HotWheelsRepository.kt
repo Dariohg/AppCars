@@ -12,7 +12,10 @@ class HotWheelsRepository {
 
     suspend fun getUserCars(token: String): Result<List<HotWheelsCar>> {
         return try {
+            println("DEBUG: Repository - Getting cars with token: $token")
             val response = hotWheelsService.getUserCars("Bearer $token")
+            println("DEBUG: Repository - Response code: ${response.code()}")
+            println("DEBUG: Repository - Response body: ${response.body()}")
             if (response.isSuccessful) {
                 Result.success(response.body()!!)
             } else {
@@ -34,7 +37,7 @@ class HotWheelsRepository {
             val nombrePart = MultipartBody.Part.createFormData("nombre", request.nombre)
             val modeloPart = MultipartBody.Part.createFormData("modelo", request.modelo)
             val colorPart = MultipartBody.Part.createFormData("color", request.color)
-            val añoFabricacionPart = MultipartBody.Part.createFormData("añoFabricacion", request.anioFabricacion.toString())
+            val anioFabricacionPart = MultipartBody.Part.createFormData("anioFabricacion", request.anioFabricacion.toString())
             val estadoPart = MultipartBody.Part.createFormData("estado", request.estado)
 
             // Crear MultipartBody.Part para la imagen con el tipo MIME correcto
@@ -53,7 +56,7 @@ class HotWheelsRepository {
                 nombre = nombrePart,
                 modelo = modeloPart,
                 color = colorPart,
-                anioFabricacion = añoFabricacionPart,
+                anioFabricacion = anioFabricacionPart,
                 estado = estadoPart,
                 imagen = imagePart
             )

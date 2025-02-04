@@ -15,10 +15,9 @@ data class HotWheelsCar(
 ) {
     fun getFullImageUrl(): String {
         return if (imagenes.isNotEmpty()) {
-            // Construye la URL completa usando la BASE_URL
             "http://10.0.2.2:3000${imagenes.first()}"
         } else {
-            "" // URL por defecto o vacía si no hay imágenes
+            ""
         }
     }
 }
