@@ -43,7 +43,7 @@ class HotWheelsRepository {
             // Crear MultipartBody.Part para la imagen con el tipo MIME correcto
             val imagePart = if (request.imagenes.isNotEmpty()) {
                 val imageBytes = request.imagenes.first()
-                val requestFile = imageBytes.toRequestBody("image/jpeg".toMediaType())  // o "image/png" según corresponda
+                val requestFile = imageBytes.toRequestBody("image/jpeg".toMediaType())
                 MultipartBody.Part.createFormData("imagenes", "image.jpg", requestFile)
             } else {
                 throw Exception("Se requiere al menos una imagen")

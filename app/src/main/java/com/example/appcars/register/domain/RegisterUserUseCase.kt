@@ -12,19 +12,19 @@ class RegisterUserUseCase {
                 return Result.failure(Exception("Por favor verifica todos los campos"))
             }
 
-            repository.register(request) // cambiado de registerUser a register
-                .map { } // Convertimos RegisterResponse a Unit
+            repository.register(request)
+                .map { }
         } catch (e: Exception) {
             Result.failure(e)
         }
     }
 
     private fun validateRequest(request: RegisterRequest): Boolean {
-        return request.nombre.isNotBlank() &&    // cambiado de name
+        return request.nombre.isNotBlank() &&
                 request.username.length >= 4 &&
                 request.email.contains("@") &&
-                request.telefono.length >= 8 &&   // cambiado de phone
-                request.edad >= 18 &&            // cambiado de age
+                request.telefono.length >= 8 &&
+                request.edad >= 18 &&
                 request.password.length >= 6
     }
 }
