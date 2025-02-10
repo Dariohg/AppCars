@@ -15,7 +15,7 @@ data class HotWheelsCar(
 ) {
     fun getFullImageUrl(): String {
         return if (imagenes.isNotEmpty()) {
-            "https://back-movil.onrender.com${imagenes.first()}"
+            "http://10.0.2.2:3000${imagenes.first()}"
         } else {
             ""
         }
